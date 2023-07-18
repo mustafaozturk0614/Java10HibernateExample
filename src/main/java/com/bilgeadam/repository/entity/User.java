@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -21,14 +23,28 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false,length = 20)
-    private String name;
+    @Embedded
+    private Name name;
     @Column(nullable = false,unique = true)
     private String username;
     @Column(nullable = false)
     @Size(min = 4,max = 32,message = "Sifre  4 ile 32 karakter arası olmalıdır")
     private String password;
+    @Transient // bu özellik artık databsede gorunmeyecek
     private int age;
-    private EGender gender;
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    private EGender gender=EGender.WOMAN;
+    /*
+        Her kullnaıcın birden falz ilgi alanı  olsun ve
+         ve her bir ilgi alnı turu  string olsun
+         Muzik ,Sinema
+     */
+
+    @ElementCollection
+    @Builder.Default
+    List<String> interests=new ArrayList<>();
+
+
 
 }
