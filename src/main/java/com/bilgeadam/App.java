@@ -1,28 +1,29 @@
 package com.bilgeadam;
 
+import com.bilgeadam.controller.UserController;
 import com.bilgeadam.repository.entity.Address;
 import com.bilgeadam.repository.entity.EAddressType;
 import com.bilgeadam.repository.entity.Name;
 import com.bilgeadam.repository.entity.User;
 import com.bilgeadam.repository.enums.EGender;
-import com.bilgeadam.utility.HibernateUtility;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Main {
+public class App {
+
+
     public static void main(String[] args) {
+
+        UserController userController=new UserController();
         List<String> interest1=List.of("Müzik","Dans");
         List<String> interest2=List.of("Sinema","Tiyatro");
         // 1.Map
         Map<EAddressType, Address> map1=new HashMap<>();
         map1.put(EAddressType.HOME, Address.builder().city("Ankara").contry("Türkiye").build());
         map1.put(EAddressType.WORK, Address.builder().city("İstanbul").contry("Türkiye").build());
-      //2.map
+        //2.map
         Map<EAddressType, Address> map2=new HashMap<>();
         map2.put(EAddressType.HOME, Address.builder().city("İzmir").contry("Türkiye").build());
         map2.put(EAddressType.WORK, new Address("Antalya","Türkiye"));
@@ -45,24 +46,8 @@ public class Main {
                 .age(18)
                 .build();
 
-        Session session=null;
-        Transaction transaction=null;
-        try {
-            session=HibernateUtility.getSessionFactory().openSession();
-            transaction=session.beginTransaction();
-             session.save(user);
-             session.save(user2);
-
-            System.out.println("user: "+user);
-
-            System.out.println(user2.getInterests().size());
-            transaction.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            transaction.rollback();;
-        }finally {
-            session.close();
-        }
+        System.out.println(userController.save(user));
+        System.out.println(userController.save(user2));
 
 
     }

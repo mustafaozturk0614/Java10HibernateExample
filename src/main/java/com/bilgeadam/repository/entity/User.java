@@ -11,6 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -44,6 +45,16 @@ public class User {
     @ElementCollection
     @Builder.Default
     List<String> interests=new ArrayList<>();
+
+    /*
+        Bir kullanıcın birden fazla adresi olabilir
+        ve adresileri burada adres turlerine gore tutalım
+        iş: adresss1
+        ev: address2
+     */
+    @ElementCollection
+    @MapKeyEnumerated(EnumType.STRING)
+    Map<EAddressType,Address> addresses;
 
 
 

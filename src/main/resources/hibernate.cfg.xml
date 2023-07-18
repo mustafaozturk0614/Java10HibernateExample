@@ -10,6 +10,7 @@
         <property name = "hibernate.connection.password">root</property>
         <property name="hibernate.show_sql"> true </property>
         <property name="hibernate.hbm2ddl.auto">create</property>
+       <!-- <property name="connection.pool_size">1</property>-->
 
     <!--  <mapping class="com.bilgeadam.repository.entity.User"/>
         <mapping class="com.bilgeadam.repository.entity.Post"/>-->
