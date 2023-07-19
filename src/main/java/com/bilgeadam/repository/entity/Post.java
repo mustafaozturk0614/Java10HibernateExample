@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Lob;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 
@@ -13,9 +13,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
+@Entity
 public class Post {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Lob // big data verileri için
     private String content;

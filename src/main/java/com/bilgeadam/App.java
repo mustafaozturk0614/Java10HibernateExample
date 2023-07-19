@@ -1,10 +1,8 @@
 package com.bilgeadam;
 
+import com.bilgeadam.controller.PostController;
 import com.bilgeadam.controller.UserController;
-import com.bilgeadam.repository.entity.Address;
-import com.bilgeadam.repository.entity.EAddressType;
-import com.bilgeadam.repository.entity.Name;
-import com.bilgeadam.repository.entity.User;
+import com.bilgeadam.repository.entity.*;
 import com.bilgeadam.repository.enums.EGender;
 
 import java.util.HashMap;
@@ -14,7 +12,7 @@ import java.util.Map;
 public class App {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         UserController userController=new UserController();
         List<String> interest1=List.of("Müzik","Dans");
@@ -48,6 +46,11 @@ public class App {
 
         System.out.println(userController.save(user));
         System.out.println(userController.save(user2));
+        PostController postController=new PostController();
+        Post post1= Post.builder().content("ilk post").userId(user.getId()).build();
+        postController.save(post1);
+        Thread.sleep(2000);
+        userController.findAll().forEach(x-> System.out.println(x.getUsername()));
 
 
     }

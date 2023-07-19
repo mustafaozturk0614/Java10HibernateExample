@@ -32,7 +32,7 @@ public class UserController implements ICrud<User> {
 
     @Override
     public List<User> findAll() {
-        return null;
+        return userService.findAll();
     }
 
     @Override
