@@ -20,5 +20,5 @@ import javax.persistence.Embeddable;
 public class Address {
 
     private  String city;
-    private  String contry;
+    private  String country;
 }

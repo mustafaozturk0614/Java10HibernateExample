@@ -56,6 +56,8 @@ public class User {
     @MapKeyEnumerated(EnumType.STRING)
     Map<EAddressType,Address> addresses;
 
+    int postCount;
+
 
 
 }

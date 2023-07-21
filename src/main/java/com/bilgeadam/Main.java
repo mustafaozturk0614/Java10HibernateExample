@@ -6,7 +6,6 @@ import com.bilgeadam.repository.entity.Name;
 import com.bilgeadam.repository.entity.User;
 import com.bilgeadam.repository.enums.EGender;
 import com.bilgeadam.utility.HibernateUtility;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -20,11 +19,11 @@ public class Main {
         List<String> interest2=List.of("Sinema","Tiyatro");
         // 1.Map
         Map<EAddressType, Address> map1=new HashMap<>();
-        map1.put(EAddressType.HOME, Address.builder().city("Ankara").contry("Türkiye").build());
-        map1.put(EAddressType.WORK, Address.builder().city("İstanbul").contry("Türkiye").build());
+        map1.put(EAddressType.HOME, Address.builder().city("Ankara").country("Türkiye").build());
+        map1.put(EAddressType.WORK, Address.builder().city("İstanbul").country("Türkiye").build());
       //2.map
         Map<EAddressType, Address> map2=new HashMap<>();
-        map2.put(EAddressType.HOME, Address.builder().city("İzmir").contry("Türkiye").build());
+        map2.put(EAddressType.HOME, Address.builder().city("İzmir").country("Türkiye").build());
         map2.put(EAddressType.WORK, new Address("Antalya","Türkiye"));
 
         User user= User.builder()
