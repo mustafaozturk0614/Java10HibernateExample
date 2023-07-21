@@ -19,6 +19,7 @@ import java.util.Map;
 @Builder
 @Entity
 @Table(name = "tbl_user")
+
 public class User {
 
     @Id

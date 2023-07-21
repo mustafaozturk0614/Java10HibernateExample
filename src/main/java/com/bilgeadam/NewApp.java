@@ -2,9 +2,12 @@ package com.bilgeadam;
 
 import com.bilgeadam.controller.PostController;
 import com.bilgeadam.controller.UserController;
+import com.bilgeadam.repository.UserRepository;
 import com.bilgeadam.repository.entity.*;
 import com.bilgeadam.repository.enums.EGender;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,10 +18,31 @@ public class NewApp {
 
           UserController userController=new UserController();
           PostController postController=new PostController();
+        UserRepository userRepository=new UserRepository();
+
 //          createUsers(userController);
 //          createPost(postController);
-        System.out.println("user===>"+userController.findByUsername("musty111"));  ;
+   //     System.out.println("user===>"+userController.findByUsername("musty111"));  ;
+       // System.out.println(userRepository.findById(2L));
+      //  System.out.println(userRepository.findById2(2L));
+      //  userRepository.findAllName().forEach(x-> System.out.println(x));
+     //   userRepository.findAllFirstName().forEach(System.out::println);
+        //userRepository.findAllFirstNameStartWith("M").forEach(System.out::println);
+      //  userRepository.findAllFirstNameStartWithAndGtPostCount("M",9).forEach(System.out::println);
+        System.out.println(userRepository.sumPostCount());
+        System.out.println(userRepository.avgPostCount());
+      List < Object []> array=userRepository.groupByPostCount();
 
+      for ( Object []  objectArray : array){
+          for (Object o :objectArray){
+              System.out.print(o+"-");
+          }
+          System.out.println();
+      }
+        for ( Object []  objectArray : array){
+            System.out.println(Arrays.toString(objectArray));
+
+        }
     }
 
     public static  void createUsers(UserController userController){
