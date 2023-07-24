@@ -2,6 +2,7 @@ package com.bilgeadam;
 
 import com.bilgeadam.controller.PostController;
 import com.bilgeadam.controller.UserController;
+import com.bilgeadam.repository.PostRepository;
 import com.bilgeadam.repository.UserRepository;
 import com.bilgeadam.repository.entity.*;
 import com.bilgeadam.repository.enums.EGender;
@@ -31,18 +32,32 @@ public class NewApp {
       //  userRepository.findAllFirstNameStartWithAndGtPostCount("M",9).forEach(System.out::println);
         System.out.println(userRepository.sumPostCount());
         System.out.println(userRepository.avgPostCount());
-      List < Object []> array=userRepository.groupByPostCount();
+//      List < Object []> array=userRepository.groupByPostCount();
+//
+//      for ( Object []  objectArray : array){
+//          for (Object o :objectArray){
+//              System.out.print(o+"-");
+//          }
+//          System.out.println();
+//      }
+//        for ( Object []  objectArray : array){
+//            System.out.println(Arrays.toString(objectArray));
+//
+//        }
 
-      for ( Object []  objectArray : array){
-          for (Object o :objectArray){
-              System.out.print(o+"-");
-          }
-          System.out.println();
-      }
-        for ( Object []  objectArray : array){
-            System.out.println(Arrays.toString(objectArray));
+      //userRepository.mostPostingUser2();
+//        List<Object[]> list=userRepository.getUsernameGenderPostCount();
+//        for (Object [] array :list){
+//            System.out.println(Arrays.toString(array));
+//        }
+//        List<Object[]> list2=userRepository.getUserGendersWithTotalPost();
+//
+//       for (Object [] array :list2){
+//            System.out.println(Arrays.toString(array));
+//      }
+        PostRepository postRepository=new PostRepository();
+        System.out.println(postRepository.findByUserWithPostId(4L));   ;
 
-        }
     }
 
     public static  void createUsers(UserController userController){
